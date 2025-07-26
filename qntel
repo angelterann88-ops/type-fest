@@ -1,0 +1,17 @@
+type Current1 = ConditionalKeys<[string, number, string], string>;
+//   ^? type Current1 = 3 | "0" | "2" | (() => ArrayIterator<"0" | "2">) | { [x: number]: boolean | undefine…
+
+type Current2 = ConditionalKeys<string[], string>;
+//   ^? type Current2 = number | (() => ArrayIterator<number>) | { [x: number]: boolean | undefined; length?…
+
+type Current3 = ConditionalKeys<[string, number, ...string[]], string | number>;
+//   ^? type Current3 = number | "0" | "1" | (() => ArrayIterator<number | "0" | "1">) | { [x: number]: bool…
+
+type Updated1 = ConditionalKeys<[string, number, string], string>;
+//   ^? type Updated1 = "0" | "2"
+
+type Updated2 = ConditionalKeys<string[], string>;
+//   ^? type Updated2 = number
+
+type Updated3 = ConditionalKeys<[string, number, ...string[]], string | number>;
+//   ^? type Updated3 = number | "0" | "1"
